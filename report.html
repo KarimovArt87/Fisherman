@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отчет по видимости AI - Brend ScanAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8b5cf6',
+                        secondary: '#ec4899'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #5727b0, #8b5cf6, #ec4899, #3b82f6);
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+        .btn-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .btn-hover:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3), 0 4px 6px -2px rgba(139, 92, 246, 0.2);
+            }
+
+        input:focus {
+            outline: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .chatbot-widget {
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+            .chatbot-widget:hover {
+                animation: none;
+                transform: scale(1.1);
+                transition: transform 0.3s ease;
+            }
+
+        .chat-window {
+            animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: bottom right;
+        }
+
+        .chart-container {
+            height: 300px;
+        }
+
+        .report-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://readdy.ai/api/search-image?query=abstract%20digital%20fluid%20gradient%20wave%20with%20blue%2C%20purple%2C%20and%20magenta%20colors%20flowing%20like%20liquid%20on%20black%20background%2C%20elegant%20modern%20technology%20visualization%2C%20high%20resolution%2C%20no%20text%2C%20minimalist%20design&width=1920&height=1080&seq=hero123&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .rating-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(#8b5cf6 0% 35%, rgba(255, 255, 255, 0.1) 35% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rating-inner {
+            width: 130px;
+            height: 130px;
+            background: #111827;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, rgba(30, 30, 50, 0.7), rgba(20, 20, 40, 0.7));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .swot-card {
+            background: rgba(31, 41, 55, 0.7);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen relative">
+    <!-- Header -->
+    <nav class="fixed w-full top-0 left-0 z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-md rounded-full border border-white/10 shadow-lg shadow-black/5 px-6 py-3 flex items-center justify-between">
+                <a href="/" id="brand-logo" class="flex items-center group transition-transform duration-300 hover:scale-105">
+                    <span class="text-2xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-colors duration-300">BrendScanAI</span>
+                </a>
+                <!-- Исправленная кнопка (ссылка) с правильным путем -->
+                <a href="index.html" class="hidden md:inline-block px-8 py-2.5 bg-gradient-to-r from-primary/80 to-secondary/80 hover:from-primary hover:to-secondary rounded-full text-white font-medium transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] hover:scale-105">Вернуться на сайт</a>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Report Header -->
+    <div class="report-header pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-primary font-medium text-lg mb-3">АНАЛИЗ ВИДИМОСТИ AI</span>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Отчет по видимости</h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Полный анализ вашей видимости в AI-поисковиках и рекомендации по улучшению</p>
+            </div>
+
+            <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-8 max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Магазин «Флора»</h2>
+                        <p class="text-gray-300 mb-4">Доставка цветов г. Минск</p>
+                        <div class="flex items-center text-gray-400">
+                            <i class="ri-calendar-line mr-2"></i>
+                            <span>ИЮНЬ 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="rating-circle">
+                        <div class="rating-inner">
+                            <span class="text-4xl font-bold">35</span>
+                            <span class="text-gray-400">из 100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end items-start">
+                    <span class="text-sm text-gray-400 mt-1">Рейтинг заметности ИИ<sup class="text-xs ml-1">*</sup></span>
+                </div>
+                <p class="mt-6 text-gray-300">
+                    Компания предоставляет услуги доставки свежих цветов в Минске и районах Беларуси.
+                    В ассортименте представлены различные букеты, композиции и подарки на разные случаи жизни.
+                    Уникальные особенности включают возможность заказа букета по фото, круглосуточное обслуживание
+                    и бесплатную доставку.
+                </p>
+
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-card rounded-xl p-4 text-center">
+                        <div class="text-3xl font-bold mb-1">34</div>
+                        <div class="text-sm text-gray-400">упоминаний в ChatGPT</div>
+                    </div>
+                    <div class="stat-card rounded-xl p-4 text-center">
+                        <div class="text-3xl font-bold mb-1">28</div>
+                        <div class="text-sm text-gray-400">упоминаний в YandexGPT</div>
+                    </div>
+                    <div class="stat-card rounded-xl p-4 text-center">
+                        <div class="text-3xl font-bold mb-1">18</div>
+                        <div class="text-sm text-gray-400">упоминаний в Gemini</div>
+                    </div>
+                    <div class="stat-card rounded-xl p-4 text-center">
+                        <div class="text-3xl font-bold mb-1">24</div>
+                        <div class="text-sm text-gray-400">упоминаний в Perplexity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Queries Section -->
+    <section class="py-16 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Топ-5 поисковых запросов</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Лидеры по основным запросам в AI-поисковиках</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full bg-gray-800 rounded-xl overflow-hidden">
+                    <thead>
+                        <tr class="bg-gray-900 text-left">
+                            <th class="py-4 px-6">Запрос</th>
+                            <th class="py-4 px-6">ChatGPT</th>
+                            <th class="py-4 px-6">Perplexity</th>
+                            <th class="py-4 px-6">Gemini</th>
+                            <th class="py-4 px-6">Cloude</th>
+                            <th class="py-4 px-6">Grok</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">Доставка цветов Минск</td>
+                            <td class="py-4 px-6">Florance, https://florance.by/</td>
+                            <td class="py-4 px-6">Ultra Flowers, https://ultraflowers.by/</td>
+                            <td class="py-4 px-6">Магазин "Флора", https://rose.by/</td>
+                            <td class="py-4 px-6">Bloom, https://bloom.by/</td>
+                            <td class="py-4 px-6">Эдем, https://edem.by/</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">Заказать цветы Минск</td>
+                            <td class="py-4 px-6">Florance, https://florance.by/</td>
+                            <td class="py-4 px-6">Ultra Flowers, https://ultraflowers.by/</td>
+                            <td class="py-4 px-6">eFlora, https://eflora.by/</td>
+                            <td class="py-4 px-6">Bloom, https://bloom.by/</td>
+                            <td class="py-4 px-6">Эдем, https://edem.by/</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">Букет на заказ Минск</td>
+                            <td class="py-4 px-6">Florance, https://florance.by/</td>
+                            <td class="py-4 px-6">Ultra Flowers, https://ultraflowers.by/</td>
+                            <td class="py-4 px-6">eFlora, https://eflora.by/</td>
+                            <td class="py-4 px-6">Bloom, https://bloom.by/</td>
+                            <td class="py-4 px-6">Эдем, https://edem.by/</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">Доставка цветов на дом Минск</td>
+                            <td class="py-4 px-6">Магазин "Флора", https://rose.by/</td>
+                            <td class="py-4 px-6">Ultra Flowers, https://ultraflowers.by/</td>
+                            <td class="py-4 px-6">eFlora, https://eflora.by/</td>
+                            <td class="py-4 px-6">Bloom, https://bloom.by/</td>
+                            <td class="py-4 px-6">Эдем, https://edem.by/</td>
+                        </tr>
+                        <tr class="hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">Цветы с доставкой Минск</td>
+                            <td class="py-4 px-6">Florance, https://florance.by/</td>
+                            <td class="py-4 px-6">Ultra Flowers, https://ultraflowers.by/</td>
+                            <td class="py-4 px-6">eFlora, https://eflora.by/</td>
+                            <td class="py-4 px-6">Bloom, https://bloom.by/</td>
+                            <td class="py-4 px-6">Магазин "Флора", https://rose.by/</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 text-center">
+                <h3 class="text-xl font-medium text-gray-300">Конкуренты по поисковым запросам</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="py-16 px-6 bg-gray-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Рекомендации</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Реализация этих мер повысит оценку готовности до 80/100 в течение 3–6 месяцев</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="recommendation-card rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                            <i class="ri-code-line ri-lg text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Техническая SEO-оптимизация</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Скорость загрузки: сжатие изображений (WebP), включение кэширования, минификация CSS/JS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Микроразметка: добавьте Schema.org (LocalBusiness, Product, FAQPage) для лучшего отображения в AI-поиске</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Адаптивность: проверьте корректность отображения на мобильных устройствах (Google Mobile-Friendly Test)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-card rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                            <i class="ri-ai-generate ri-lg text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">AI-ориентированные улучшения</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Контент: Внедрите раздел «Вопрос-ответ» с длинными хвостовыми запросами</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Добавьте точные ценовые формулы (например, «от 500 ₽/м² за профнастил»)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Структура: Используйте подзаголовки H2/H3 с ключевыми фразами (рейтинги, гарантии, рассрочка)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Разместите скрытые триггеры для AI (например, «Флора — топ-3 по доставке цветов в Минске»)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="recommendation-card rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center">
+                            <i class="ri-link ri-lg text-pink-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Оптимизация ссылочной массы</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Локальное цитирование – размещайте информацию о компании на региональных форумах</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>В каталогах (Яндекс.Справочник, 2ГИС) и отзовиках (Flamp, Zoon)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Гостевые посты – публикуйте экспертные статьи на тематических площадках</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line ri-sm text-green-500 mt-1 mr-2"></i>
+                            <span>Соцсети и видеоконтент – усилите присутствие в YouTube и ВКонтакте</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWOT Analysis -->
+    <section class="py-16 px-6 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Анализ сильных и слабых сторон</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Ключевые факторы, влияющие на вашу репутацию</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="swot-card p-6">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                            <i class="ri-thumb-up-line ri-lg text-green-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Положительные стороны</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-check-line ri-sm text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Высокое качество услуг</h4>
+                                <p class="text-gray-400 text-sm">Клиенты отмечают, что услуги выполнены качественно</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-check-line ri-sm text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Профессионализм сотрудников</h4>
+                                <p class="text-gray-400 text-sm">В отзывах говорится о высокой квалификации сотрудников</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-check-line ri-sm text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Люксовый интерьер и атмосфера</h4>
+                                <p class="text-gray-400 text-sm">Клиенты ощущают комфорт и изобилие</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-check-line ri-sm text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Просторные помещения</h4>
+                                <p class="text-gray-400 text-sm">Отмечается как преимущество и редкость</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-check-line ri-sm text-green-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Индивидуальный подход</h4>
+                                <p class="text-gray-400 text-sm">Изменение процедур в соответствии с потребностями клиентов</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swot-card p-6">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
+                            <i class="ri-thumb-down-line ri-lg text-red-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Отрицательные стороны</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-close-line ri-sm text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Высокая стоимость услуг</h4>
+                                <p class="text-gray-400 text-sm">Несмотря на качество, цены могут отпугивать аудиторию</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-close-line ri-sm text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Платные напитки</h4>
+                                <p class="text-gray-400 text-sm">В салоне приличного уровня напитки могли бы быть бесплатными</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-close-line ri-sm text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Несоответствие цены и качества</h4>
+                                <p class="text-gray-400 text-sm">Есть случаи недовольства работой сотрудников</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-close-line ri-sm text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Вопросы по управлению временем</h4>
+                                <p class="text-gray-400 text-sm">Отмечены задержки и неуважение к личному времени</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3 mt-1">
+                                <i class="ri-close-line ri-sm text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Недостаток в коммуникации</h4>
+                                <p class="text-gray-400 text-sm">Напитки включены в чек без предварительного уведомления</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-gray-800 rounded-xl p-6 max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold text-center mb-4">Общий рейтинг отзывов</h3>
+                <div class="flex justify-center">
+                    <div class="flex items-center bg-gray-900 px-6 py-3 rounded-full">
+                        <div class="text-3xl font-bold mr-4">4.8</div>
+                        <div class="flex">
+                            <i class="ri-star-fill text-yellow-400 ri-lg"></i>
+                            <i class="ri-star-fill text-yellow-400 ri-lg"></i>
+                            <i class="ri-star-fill text-yellow-400 ri-lg"></i>
+                            <i class="ri-star-fill text-yellow-400 ri-lg"></i>
+                            <i class="ri-star-half-fill text-yellow-400 ri-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-gray-400 mt-4">На основе отзывов на Яндекс, Zoon и других платформах</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Analysis -->
+    <section class="py-16 px-6 bg-gray-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Анализ страниц</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Текущее состояние и рекомендации по оптимизации</p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full bg-gray-800 rounded-xl overflow-hidden">
+                    <thead>
+                        <tr class="bg-gray-900 text-left">
+                            <th class="py-4 px-6">Ссылка</th>
+                            <th class="py-4 px-6">Текущий Title</th>
+                            <th class="py-4 px-6">Рекомендованный Title</th>
+                            <th class="py-4 px-6">Рекомендованное описание</th>
+                            <th class="py-4 px-6">Скорость</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">https://rose.by/</td>
+                            <td class="py-4 px-6">Магазин цветов "Флора" - Доставка цветов в Минске</td>
+                            <td class="py-4 px-6 font-medium">Флора - Доставка свежих цветов в Минске 24/7 | Топ-3 по отзывам</td>
+                            <td class="py-4 px-6">Закажите свежие цветы с доставкой по Минску круглосуточно. Широкий выбор букетов, композиций и подарков. Бесплатная доставка при заказе от 50 BYN.</td>
+                            <td class="py-4 px-6">0.85</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-850">
+                            <td class="py-4 px-6 font-medium">https://rose.by/catalog/</td>
+                            <td class="py-4 px-6">Каталог цветов</td>
+                            <td class="py-4 px-6 font-medium">Каталог цветов Флора - Букеты, композиции, подарки в Минске</td>
+                            <td class="py-4 px-6">Выберите идеальный букет из нашего каталога: розы, тюльпаны, хризантемы, экзотические цветы. Составление букетов по фото. Доставка в течение 2 часов.</td>
+                            <td class="py-4 px-6">0.66</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center mb-8">Динамика видимости в AI-поиске</h3>
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div id="visibility-chart" class="chart-container"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section with Contact Form -->
+    <section class="py-20 px-6 bg-gradient-to-r from-primary/10 to-secondary/10">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Получите персональную консультацию</h2>
+            <p class="text-xl text-gray-300 mb-10">Оставьте контакты и наш специалист свяжется с вами</p>
+
+            <form id="consultation-form" class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-left text-gray-400 mb-2 ml-4">Ваше имя</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                                <i class="ri-user-line text-gray-500"></i>
+                            </div>
+                            <input type="text"
+                                   id="name"
+                                   class="w-full bg-gray-800 border border-gray-700 text-white text-lg rounded-full pl-12 pr-4 py-4 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                                   placeholder="Александр"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-left text-gray-400 mb-2 ml-4">Ваш телефон</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                                <i class="ri-phone-line text-gray-500"></i>
+                            </div>
+                            <input type="tel"
+                                   id="phone"
+                                   class="w-full bg-gray-800 border border-gray-700 text-white text-lg rounded-full pl-12 pr-4 py-4 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                                   placeholder="+7 (___) ___-__-__"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="btn-hover w-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+                    <i class="ri-send-plane-line mr-2"></i> Получить консультацию
+                </button>
+
+                <p class="text-gray-500 text-sm mt-4">
+                    Нажимая кнопку, вы соглашаетесь с
+                    <a href="#" class="text-primary hover:underline">политикой конфиденциальности</a>
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <!-- Логотип -->
+                <a href="#" class="inline-block">
+                    <span class="text-3xl font-bold text-white">Brend ScanAI</span>
+                </a>
+
+                <!-- Контакты - сразу под логотипом -->
+                <div class="mt-6 flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="mailto:BrendScanAI@yandex.ru" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-mail-line mr-2"></i> BrendScanAI@yandex.ru
+                    </a>
+                    <a href="https://t.me/checkbrandai_bot" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-telegram-line mr-2"></i> @checkbrandai_bot
+                    </a>
+                </div>
+
+                <!-- Копирайт - ниже контактов с отступом -->
+                <p class="text-gray-500 mt-8">© 2025 Brend ScanAI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно подтверждения консультации -->
+    <div id="consultation-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-primary/30 rounded-2xl max-w-md w-full overflow-hidden relative animate-scaleIn">
+            <button id="close-consultation-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i class="ri-close-line ri-xl"></i>
+            </button>
+
+            <div class="p-8 pt-12 flex flex-col items-center text-center">
+                <div class="w-24 h-24 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 relative">
+                    <div class="absolute inset-0 border-4 border-blue-500/30 rounded-full animate-ping-slow"></div>
+                    <i class="ri-customer-service-2-line ri-3x text-blue-500"></i>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mb-4">Спасибо за заявку!</h3>
+                <p class="text-xl text-gray-300 mb-6">
+                    Мы свяжемся с вами в самое ближайшее время, чтобы обсудить удобный формат консультации и ответить на все ваши вопросы!
+                </p>
+
+                <button id="modal-close-btn" class="mt-4 px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-full transition-all duration-300 hover:from-primary/90 hover:to-secondary/90 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]">
+                    Отлично, жду звонка
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Инициализация графика динамики видимости
+        document.addEventListener('DOMContentLoaded', function () {
+            const chart = echarts.init(document.getElementById('visibility-chart'));
+            const option = {
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                    borderColor: '#8b5cf6',
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                legend: {
+                    data: ['Общая видимость', 'По основным запросам'],
+                    textStyle: {
+                        color: '#d1d5db'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн'],
+                    axisLine: {
+                        lineStyle: {
+                            color: '#4b5563'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#9ca3af'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLine: {
+                        lineStyle: {
+                            color: '#4b5563'
+                        }
+                    },
+                    splitLine: {
+                        lineStyle: {
+                            color: '#374151'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#9ca3af'
+                    }
+                },
+                series: [
+                    {
+                        name: 'Общая видимость',
+                        type: 'line',
+                        smooth: true,
+                        data: [20, 22, 25, 28, 32, 35],
+                        lineStyle: {
+                            width: 4,
+                            color: '#8b5cf6'
+                        },
+                        itemStyle: {
+                            color: '#8b5cf6'
+                        },
+                        symbolSize: 8,
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(139, 92, 246, 0.3)' },
+                                { offset: 1, color: 'rgba(139, 92, 246, 0.1)' }
+                            ])
+                        }
+                    },
+                    {
+                        name: 'По основным запросам',
+                        type: 'line',
+                        smooth: true,
+                        data: [15, 18, 20, 22, 27, 30],
+                        lineStyle: {
+                            width: 4,
+                            color: '#ec4899'
+                        },
+                        itemStyle: {
+                            color: '#ec4899'
+                        },
+                        symbolSize: 8,
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(236, 72, 153, 0.3)' },
+                                { offset: 1, color: 'rgba(236, 72, 153, 0.1)' }
+                            ])
+                        }
+                    }
+                ]
+            };
+            chart.setOption(option);
+
+            // Обработка отправки формы консультации
+            const consultationForm = document.getElementById('consultation-form');
+            const consultationModal = document.getElementById('consultation-modal');
+            const closeConsultationBtn = document.getElementById('close-consultation-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            consultationForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                consultationModal.classList.remove('hidden');
+                consultationModal.classList.add('flex');
+            });
+
+            function closeConsultationModal() {
+                consultationModal.classList.add('hidden');
+                consultationModal.classList.remove('flex');
+            }
+
+            closeConsultationBtn.addEventListener('click', closeConsultationModal);
+            modalCloseBtn.addEventListener('click', closeConsultationModal);
+
+            // Закрытие по клику вне окна
+            consultationModal.addEventListener('click', function (e) {
+                if (e.target === consultationModal) {
+                    closeConsultationModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

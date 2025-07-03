@@ -1,131 +1,1438 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Fider</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand ScanAI: Оптимизация под ИИ для бизнеса - Увеличь видимость в 2025!</title>
+<meta name="description" content="Brand ScanAI: SaaS-платформа для оптимизации видимости в ИИ-поиске. Анализ сайта, рекомендации, отчеты. Увеличьте трафик из ChatGPT и YandexGPT! Демо-анализ бесплатно!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#8b5cf6',secondary:'#ec4899'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@keyframes gradientFlow {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+.gradient-bg {
+background: linear-gradient(-45deg, #5727b0, #8b5cf6, #ec4899, #3b82f6);
+background-size: 400% 400%;
+animation: gradientFlow 15s ease infinite;
+}
+.gradient-text {
+background: linear-gradient(90deg, #8b5cf6, #ec4899);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.card-hover {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.btn-hover {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-hover:hover {
+transform: scale(1.05);
+box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3), 0 4px 6px -2px rgba(139, 92, 246, 0.2);
+}
+input:focus {
+outline: none;
+}
+<style>
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+@keyframes slideIn {
+from { transform: scale(0.8); opacity: 0; }
+to { transform: scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+.chatbot-widget {
+animation: bounce 3s ease-in-out infinite;
+}
+.chatbot-widget:hover {
+animation: none;
+transform: scale(1.1);
+transition: transform 0.3s ease;
+}
+.chat-window {
+animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+transform-origin: bottom right;
+}
+.chat-message-bot {
+animation: fadeIn 0.5s ease-out;
+}
+.chat-message-user {
+animation: fadeIn 0.5s ease-out;
+}
+</style>
+</head>
+
+<body class="bg-black text-white min-h-screen relative">
+    <!-- Hero Section with Gradient Background -->
+    <div id="hero" class="relative min-h-screen overflow-hidden">
+        <div class="absolute inset-0 z-0" style="background-image: url('https://readdy.ai/api/search-image?query=abstract%20digital%20fluid%20gradient%20wave%20with%20blue%2C%20purple%2C%20and%20magenta%20colors%20flowing%20like%20liquid%20on%20black%20background%2C%20elegant%20modern%20technology%20visualization%2C%20high%20resolution%2C%20no%20text%2C%20minimalist%20design&width=1920&height=1080&seq=hero123&orientation=landscape'); background-size: cover; background-position: center;"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+        <!-- Navigation -->
+        <nav class="fixed w-full top-0 left-0 z-50 px-6 py-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-full border border-white/10 shadow-lg shadow-black/5 px-6 py-3 flex items-center justify-between">
+                    <a href="/" id="brand-logo" class="flex items-center group transition-transform duration-300 hover:scale-105">
+                        <span class="text-2xl font-bold text-white group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary group-hover:bg-clip-text group-hover:text-transparent transition-colors duration-300">Brand ScanAi</span>
+                    </a>
+                    <div class="hidden md:flex-1 md:flex items-center justify-center space-x-8">
+                        <div class="flex items-center space-x-8">
+                            <a href="#hero" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">Главная</a>
+                            <a href="#features" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">Возможности</a>
+                            <a href="#use-cases" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">Кейсы</a>
+                            <a href="#testimonials" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">Отзывы</a>
+                            <a href="#faq" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">FAQ</a>
+                            <a href="#pricing" class="text-white hover:text-primary transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-primary hover:after:w-full after:transition-all after:duration-300">Цены</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="hidden md:inline-block px-8 py-2.5 bg-gradient-to-r from-primary/80 to-secondary/80 hover:from-primary hover:to-secondary rounded-full text-white font-medium transition-all duration-300 shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] hover:scale-105">Начать</a>
+                    <button class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                        <i class="ri-menu-line ri-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero Content -->
+        <div class="relative z-20 flex flex-col items-center justify-center px-6 py-24 text-center h-screen">
+            <span class="text-primary font-medium mb-4">МАРКЕТИНГОВАЯ ПЛАТФОРМА С ИИ</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 max-w-5xl leading-tight">Трансформируйте ваш маркетинг с помощью<br><span class="gradient-text whitespace-nowrap">Brand ScanAI</span></h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl">Масштабируйте ваш рост с помощью дополнительного трафика из AI-помошников с помощью наших рекомендаций.</p>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full max-w-2xl">
+                <div class="relative flex-1">
+                    <input type="url" placeholder="Введите URL вашего сайта" class="w-full bg-white/10 backdrop-blur-md text-white placeholder-gray-400 px-6 py-5 rounded-[100px] border border-white/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/50 text-lg">
+                </div>
+                <button class="btn-hover bg-gradient-to-r from-[#6366f1] to-[#a855f7] text-white text-xl font-medium px-12 py-5 rounded-[100px] shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap">Анализировать</button>
+            </div>
         </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Fider</div>
-      </div>
     </div>
-    <script>
 
-      var container = document.querySelector("#unity-container");
-      var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-primary text-xl mb-3">Наши возможности</h2>
+                <h3 class="text-4xl font-bold">Повысьте вашу видимость в нейросетях</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Feature 1: AI answer -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover">
+                    <h4 class="text-2xl font-bold mb-4">Станьте очевидным выбором.</h4>
+                    <p class="text-gray-300 mb-6"> Мы понимаем, что делает ваш бренд по-настоящему ценным. Наша задача – сделать это преимущество неоспоримым для ИИ-ассистентов и ваших клиентов.</p>
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                        <style>
+                            @keyframes slideUp {
+                                from {
+                                    opacity: 0;
+                                    transform: translateY(20px);
+                                }
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+                                to {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/test.loader.js";
-      var config = {
-        dataUrl: buildUrl + "/test.data.unityweb",
-        frameworkUrl: buildUrl + "/test.framework.js.unityweb",
-        codeUrl: buildUrl + "/test.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Fider",
-        productVersion: "0.1.0",
-        showBanner: unityShowBanner,
-      };
+                            .chat-message {
+                                opacity: 0;
+                            }
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+                                .chat-message.animate {
+                                    animation: slideUp 0.5s ease forwards;
+                                }
 
-      // If you would like all file writes inside Unity Application.persistentDataPath
-      // directory to automatically persist so that the contents are remembered when
-      // the user revisits the site the next time, uncomment the following line:
-      // config.autoSyncPersistentDataPath = true;
-      // This autosyncing is currently not the default behavior to avoid regressing
-      // existing user projects that might rely on the earlier manual
-      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
-      // expected to change.
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
-
-      loadingBar.style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);
-
+                                .chat-message:nth-child(2) {
+                                    animation-delay: 0.2s;
+                                }
+                        </style>
+                        <div class="chat-message flex items-start mb-4">
+                            <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                                <i class="ri-user-line ri-sm"></i>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-3 max-w-xs">
+                                <p class="text-sm">Где купить цветы в Москве?</p>
+                            </div>
+                        </div>
+                        <div class="chat-message flex items-start justify-end mb-4">
+                            <div class="bg-primary bg-opacity-30 rounded-lg p-3 max-w-xs">
+                                <p class="text-sm">Лучшей выбор это салон цветов "Flowers" по адресу ул. Рогожский Вал, 7</p>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-3">
+                                <i class="ri-customer-service-line ri-sm"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const observer = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add('animate');
+                                    }
+                                });
+                            }, { threshold: 0.5 });
+                            document.querySelectorAll('.chat-message').forEach(message => {
+                                observer.observe(message);
+                            });
+                        });
+                    </script>
+                </div>
+                <!-- Feature 2: Secured Payment -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover">
+                    <h4 class="text-2xl font-bold mb-4">Прибыль уже здесь. В нейросетях</h4>
+                    <p class="text-gray-300 mb-6">ИИ-ассистенты направляют клиентов миллионами. Это ваш неосвоенный поток прибыли. Превратите его в реальные продажи — начните оптимизацию сейчас.</p>
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center mr-3">
+                                    <i class="ri-secure-payment-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Баланс</h5>
+                                    <div class="flex items-center">
+                                        <i class="ri-check-line ri-sm text-green-500 mr-1"></i>
+                                        <span class="text-sm text-green-500">Поступление</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-more-2-fill ri-lg"></i>
+                            </div>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-3">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-300">Входящий платеж</span>
+                                <span class="font-medium">₽12,489.00</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-300">Дата</span>
+                                <span class="text-sm">Май 27, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 3: Review -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover">
+                    <h4 class="text-2xl font-bold mb-4">Сила отзывов — ваш козырь перед ИИ.</h4>
+                    <p class="text-gray-300 mb-6">Анализируем отзывы с помощью ИИ, извлекая социальное доказательство вашего превосходства. Формируем сигналы, которые убеждают ИИ-ассистентов рекомендовать именно вас.</p>
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6">
+                        <div class="flex items-center mb-3">
+                            <i class="ri-double-quotes-l ri-2x text-primary mr-2"></i>
+                        </div>
+                        <p class="text-sm italic mb-3">"В этом салоне приобрела свежие цветы. Они восхитительны. Флористы — профессионалы своего дела."</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">
+                                <i class="ri-user-line ri-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium">Надежда Курпатова</p>
+                                <p class="text-xs text-gray-400">Москва, ул. Рогожский Вал, 7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature 4: Analytics Dashboard -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover">
+                    <h4 class="text-2xl font-bold mb-4">Ваш рост под контролем ИИ.</h4>
+                    <p class="text-gray-300 mb-6"> Наш дашборд в реальном времени показывает динамику вашей видимости по ключевым показателям. Автоматически анализирует тренды и выдает четкие шаги для улучшения позиций в ИИ.</p>
+                    <div class="bg-gray-800 rounded-lg p-4 mb-6 h-48" id="analytics-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script id="stats-animation">
+        document.addEventListener('DOMContentLoaded', function () {
+            const stats = document.querySelectorAll('.stat-number');
+            function animateNumber(element, target) {
+                let current = 0;
+                const increment = target / 50;
+                const duration = 2000;
+                const interval = duration / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.round(current);
+                }, interval);
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.dataset.target);
+                        animateNumber(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            stats.forEach(stat => observer.observe(stat));
+        });
     </script>
-  </body>
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="py-20 px-6 bg-gray-950">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-primary text-xl mb-3">Возможности будущего уже здесь</h2>
+                <h3 class="text-4xl font-bold mb-6">Узнайте, почему ИИ важен для вашего бизнеса</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto">Почему стоит обратить внимание на чат-ботов с искусственным интеллектом уже сегодня?</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+                <div class="bg-gray-900 rounded-xl p-8 relative group">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                    <div class="relative flex items-center mb-8">
+                        <div class="w-14 h-14 rounded-full bg-primary/20 flex items-center justify-center mr-4 shadow-lg shadow-primary/20">
+                            <i class="ri-line-chart-line ri-2x text-primary"></i>
+                        </div>
+                        <div>
+                            <span class="text-primary text-sm font-medium">Исследование</span>
+                            <h4 class="text-2xl font-bold mt-1">Тенденций ИИ трафика</h4>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-4xl font-bold mb-2">
+                                <span class="stat-number" data-target="81">0</span>%
+                            </div>
+                            <p class="text-gray-400">Скачок трафика за год</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold mb-2">
+                                <span class="stat-number" data-target="55,2">0</span> МЛРД+
+                            </div>
+                            <p class="text-gray-400">Посещений за год</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold mb-2">
+                                <span class="stat-number" data-target="4,6">0</span> МЛРД+
+                            </div>
+                            <p class="text-gray-400">Посещений в месяц</p>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold mb-2">
+                                <span class="stat-number" data-target="233">0</span> МЛН+
+                            </div>
+                            <p class="text-gray-400">Посещений в день</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-xl p-8 relative group">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl blur-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+                    <div class="relative flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <i class="ri-trophy-line ri-xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold">Повышение видимости</h4>
+                            <p class="text-sm text-gray-400">Бизнес заметнее в ИИ-поиске.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                                <i class="ri-award-line ri-lg text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-1">Привлечение клиентов</h5>
+                                <p class="text-sm text-gray-400">Больше трафика — больше продаж.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                                <i class="ri-medal-line ri-lg text-purple-500"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-1">Конкурентное преимущество</h5>
+                                <p class="text-sm text-gray-400">Конкурентное преимущество</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
+                                <i class="ri-shield-star-line ri-lg text-pink-500"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-medium mb-1">Рост доверия</h5>
+                                <p class="text-sm text-gray-400">Упоминания укрепляют репутацию.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+
+                <!-- Use Case 1 -->
+                <div class="group bg-gray-900 rounded-xl overflow-hidden card-hover relative">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-gray-900 z-10 transition-all duration-300 group-hover:from-black/80 group-hover:via-black/60 group-hover:to-gray-900"></div>
+                    <div class="h-64 overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20minimalist%20e-commerce%20workspace%20with%20sleek%20laptop%20displaying%20analytics%20dashboard%2C%20soft%20ambient%20lighting%2C%20contemporary%20office%20setup%20with%20clean%20white%20background%2C%20professional%20and%20sophisticated%20composition&width=600&height=400&seq=usecase1&orientation=landscape" alt="E-commerce Marketing" class="w-full h-full object-cover object-top brightness-75">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                <i class="ri-shopping-bag-line ri-lg text-blue-500"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">Бизнесу</h4>
+                        </div>
+                        <p class="text-gray-300 mb-4">Контролируйте свое присутствие в ИИ-поиске! Получайте простые рекомендации для привлечения клиентов из ChatGpt, YandexGpt и других.</p>
+                        <div class="flex items-center text-blue-500">
+                        </div>
+                    </div>
+                </div>
+                <!-- Use Case 2 -->
+                <div class="group bg-gray-900 rounded-xl overflow-hidden card-hover relative">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-gray-900 z-10 transition-all duration-300 group-hover:from-black/80 group-hover:via-black/60 group-hover:to-gray-900"></div>
+                    <div class="h-64 overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20tech%20workspace%20with%20elegant%20monitor%20displaying%20data%20visualization%2C%20contemporary%20minimalist%20office%20environment%2C%20clean%20white%20walls%2C%20organized%20desk%20arrangement%2C%20professional%20setting%20with%20sleek%20design%20elements&width=600&height=400&seq=usecase2&orientation=landscape" alt="SaaS Marketing" class="w-full h-full object-cover object-top brightness-75">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                <i class="ri-rocket-line ri-lg text-purple-500"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">Маркетологам и SEO-специалистам</h4>
+                        </div>
+                        <p class="text-gray-300 mb-4">Внедряйте ИИ-оптимизацию профессионально. Глубокий анализ, отслеживание конкурентов, готовые отчеты для эффективных решений</p>
+                        <div class="flex items-center text-purple-500">
+                        </div>
+                    </div>
+                </div>
+                <!-- Use Case 3 -->
+                <div class="group bg-gray-900 rounded-xl overflow-hidden card-hover relative">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-gray-900 z-10 transition-all duration-300 group-hover:from-black/80 group-hover:via-black/60 group-hover:to-gray-900"></div>
+                    <div class="h-64 overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://readdy.ai/api/search-image?query=contemporary%20marketing%20workspace%20with%20sleek%20presentation%20display%20showing%20analytics%2C%20modern%20minimalist%20office%20interior%2C%20clean%20organized%20desk%20setup%2C%20professional%20atmosphere%20with%20elegant%20design%20elements&width=600&height=400&seq=usecase3&orientation=landscape" alt="Agency Scaling" class="w-full h-full object-cover object-top brightness-75">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center">
+                                <i class="ri-line-chart-line ri-lg text-pink-500"></i>
+                            </div>
+                            <h4 class="text-xl font-bold">Маркетинговым агентствам</h4>
+                        </div>
+                        <p class="text-gray-300 mb-4">Масштабируйте ИИ-видимость для всех клиентов! Брендированые отчеты, единый дашборд, приоритетная поддержка. Управляйте эффективно</p>
+                        <div class="flex items-center text-pink-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script id="stats-animation">
+        document.addEventListener('DOMContentLoaded', function () {
+            const stats = document.querySelectorAll('.stat-number');
+            function animateNumber(element, target) {
+                let current = 0;
+                const increment = target / 50;
+                const duration = 2000;
+                const interval = duration / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.round(current);
+                }, interval);
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.dataset.target);
+                        animateNumber(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            stats.forEach(stat => observer.observe(stat));
+        });
+    </script>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-500 text-xl mb-3">Отзывы</h2>
+                <h3 class="text-4xl font-bold mb-6 text-white">Что говорят наши клиенты</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto">Узнайте мнение компаний, которые увеличили видимость в ИИ-поиске с помощью Brend ScanAI</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Testimonial 1: Директор компании СтройДом -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover flex flex-col border border-gray-800 hover:border-blue-500 transition-all">
+                    <div class="flex items-center mb-6">
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 flex-grow mb-6">"После внедрения рекомендаций Brend ScanAI мы вышли в топ ИИ-поиска по ключевым запросам. Количество заявок с ИИ-ассистентов увеличилось в 2 раза за 4 месяца. Технические рекомендации по поисковым запросам были бесценны!"</p>
+                    <div class="flex items-center h-[72px]">
+                        <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mr-4 border border-blue-500">
+                            <i class="ri-building-line text-blue-400"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white">Алексей Волков</p>
+                            <p class="text-sm text-gray-400">Директор "СтройДом"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2: Фрилансер SEO-специалист -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover flex flex-col border border-gray-800 hover:border-blue-500 transition-all">
+                    <div class="flex items-center mb-6">
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 flex-grow mb-6">"Использую Brend ScanAI для всех клиентов. Платформа экономит 10+ часов в неделю на аудит. Конкретные рекомендации по микроразметке и триггерам для ИИ сразу дают результат. Особенно ценю анализ конкурентов - теперь могу показать клиентам реальные KPI роста видимости в ChatGPT и YandexGPT."</p>
+                    <div class="flex items-center h-[72px]">
+                        <div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center mr-4 border border-green-500">
+                            <i class="ri-user-line text-green-400"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white">Екатерина Смирнова</p>
+                            <p class="text-sm text-gray-400">SEO-специалист (фрилансер)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3: Директор рекламного агентства -->
+                <div class="bg-gray-900 rounded-xl p-8 card-hover flex flex-col border border-gray-800 hover:border-blue-500 transition-all">
+                    <div class="flex items-center mb-6">
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                        <i class="ri-star-fill ri-sm text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-300 flex-grow mb-6">"Brend ScanAI стал нашим секретным оружием в SEORocket. За 3 месяца внедрения для 12 клиентов средний рост рейтинга заметности ИИ - 45 пунктов! PDF-отчеты с графиками динамики теперь включаем в ежемесячную аналитику под нашим брендом. Сервис окупился в первый же месяц благодаря новым клиентам, пришедшим для ИИ-оптимизации."</p>
+                    <div class="flex items-center h-[72px]">
+                        <div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center mr-4 border border-purple-500">
+                            <i class="ri-rocket-line text-purple-400"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium text-white">Дмитрий Козлов</p>
+                            <p class="text-sm text-gray-400">Директор "SeoRocket"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section -->
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-6 bg-gray-950">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-primary text-xl mb-3">FAQ</h2>
+                <h3 class="text-4xl font-bold mb-6">Часто задаваемые вопросы</h3>
+                <p class="text-gray-300">Найдите ответы на популярные вопросы о нашей платформе.</p>
+            </div>
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-800 rounded-lg overflow-hidden transition-all duration-200 hover:border-blue-500">
+                    <button class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-900/50">
+                        <span class="text-lg font-medium text-white">Наши рекомендации увеличат поисковый трафик?</span>
+                        <i class="ri-add-line ri-lg faq-icon text-blue-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="space-y-3 text-gray-300">
+                            <p class="font-medium text-blue-400">Да, но с акцентом на видимость в ИИ-ассистентах</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><span class="font-semibold">Техническая SEO-оптимизация:</span> Ускорение сайта, микроразметка Schema.org</li>
+                                <li><span class="font-semibold">AI-контент:</span> Ответы на длинные хвостовые запросы и точные ценовые формулы</li>
+                                <li><span class="font-semibold">Ссылочная масса:</span> Локальные цитирования и гостевые посты</li>
+                            </ul>
+                            <p>Эти меры улучшают позиции в ответах ChatGPT, Gemini и других ИИ-ассистентов.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-800 rounded-lg overflow-hidden transition-all duration-200 hover:border-blue-500">
+                    <button class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-900/50">
+                        <span class="text-lg font-medium text-white">Как быстро улучшится наш рейтинг заметности ИИ?</span>
+                        <i class="ri-add-line ri-lg faq-icon text-blue-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="space-y-3 text-gray-300">
+                            <div class="flex items-start">
+                                <span class="inline-block bg-blue-900/50 text-blue-400 px-3 py-1 rounded-full text-sm font-medium mr-3">3-6 мес</span>
+                                <p>При комплексном внедрении рекомендаций</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <p class="font-semibold text-white">Пример из практики:</p>
+                                <p>Клиенты, оптимизировавшие скорость сайта и добавившие локальные цитирования, отмечают:</p>
+                                <ul class="list-disc pl-5 mt-2 space-y-1">
+                                    <li>Рост упоминаний в ИИ на <span class="text-green-400">40-60%</span> за 4 месяца</li>
+                                    <li>Улучшение рейтинга с <span class="text-yellow-400">35/100</span> до <span class="text-green-400">80/100</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-800 rounded-lg overflow-hidden transition-all duration-200 hover:border-blue-500">
+                    <button class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-900/50">
+                        <span class="text-lg font-medium text-white">Чем оптимизация под ИИ отличается от обычного SEO?</span>
+                        <i class="ri-add-line ri-lg faq-icon text-blue-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="grid md:grid-cols-2 gap-6 text-gray-300">
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <p class="font-semibold text-blue-400 mb-3">Для ИИ-поиска</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-blue-400 mt-1 mr-2"></i>
+                                        <span>Триггеры типа <span class="font-mono bg-gray-700 px-1 rounded">"Топ-3 по монтажу заборов"</span></span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-blue-400 mt-1 mr-2"></i>
+                                        <span>Структурированные FAQ и цены</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-blue-400 mt-1 mr-2"></i>
+                                        <span>Упоминания в региональных форумах</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <p class="font-semibold text-purple-400 mb-3">Традиционное SEO</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-purple-400 mt-1 mr-2"></i>
+                                        <span>Классические ключевые слова</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-purple-400 mt-1 mr-2"></i>
+                                        <span>Обратные ссылки с сайтов</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-arrow-right-line text-purple-400 mt-1 mr-2"></i>
+                                        <span>Позиции в Google/Yandex</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-800 rounded-lg overflow-hidden transition-all duration-200 hover:border-blue-500">
+                    <button class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-900/50">
+                        <span class="text-lg font-medium text-white">Почему наш бренд не появляется в ответах ИИ?</span>
+                        <i class="ri-add-line ri-lg faq-icon text-blue-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="space-y-4 text-gray-300">
+                            <div class="flex items-start bg-red-900/20 p-4 rounded-lg border-l-4 border-red-500">
+                                <i class="ri-alert-line text-red-400 text-xl mr-3"></i>
+                                <div>
+                                    <p class="font-semibold text-white">Основные причины:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                                        <li>Медленная загрузка сайта (>3 сек)</li>
+                                        <li>Отсутствие микроразметки Schema.org</li>
+                                        <li>Менее 10 локальных цитирований</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex items-start bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
+                                <i class="ri-lightbulb-flash-line text-blue-400 text-xl mr-3"></i>
+                                <div>
+                                    <p class="font-semibold text-white">Решение от Brend ScanAI:</p>
+                                    <p>Наш анализ выявляет конкретные "пробелы" и предоставляет:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                                        <li>Чек-лист технических доработок</li>
+                                        <li>Список релевантных площадок для публикаций</li>
+                                        <li>Шаблоны AI-оптимизированного контента</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="border border-gray-800 rounded-lg overflow-hidden transition-all duration-200 hover:border-blue-500">
+                    <button class="faq-button w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-gray-900/50">
+                        <span class="text-lg font-medium text-white">Как измеряется эффективность вашего сервиса?</span>
+                        <i class="ri-add-line ri-lg faq-icon text-blue-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6">
+                        <div class="space-y-4 text-gray-300">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <p class="font-semibold text-green-400 mb-2">Основные метрики</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-2 text-xs">1</span>
+                                            <span>Рейтинг заметности ИИ (0-100)</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-2 text-xs">2</span>
+                                            <span>Упоминания в ChatGPT/Gemini/Claude</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <span class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-2 text-xs">3</span>
+                                            <span>Позиции по 50+ ключевым запросам</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <p class="font-semibold text-purple-400 mb-2">Дополнительно</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <i class="ri-line-chart-line text-purple-400 mr-2"></i>
+                                            <span>Динамика изменений (графики)</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="ri-bar-chart-2-line text-purple-400 mr-2"></i>
+                                            <span>Сравнение с 10+ конкурентами</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="ri-file-text-line text-purple-400 mr-2"></i>
+                                            <span>Еженедельные PDF-отчеты</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Аккордеон для FAQ
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqButtons = document.querySelectorAll('.faq-button');
+
+            faqButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.faq-icon');
+
+                    // Закрываем другие открытые элементы
+                    document.querySelectorAll('.faq-content').forEach(item => {
+                        if (item !== content && item.classList.contains('!block')) {
+                            item.classList.remove('!block');
+                            item.classList.add('hidden');
+                            const otherIcon = item.previousElementSibling.querySelector('.faq-icon');
+                            otherIcon.classList.remove('ri-subtract-line');
+                            otherIcon.classList.add('ri-add-line');
+                        }
+                    });
+
+                    // Переключаем текущий элемент
+                    if (content.classList.contains('hidden')) {
+                        content.classList.remove('hidden');
+                        content.classList.add('!block');
+                        icon.classList.remove('ri-add-line');
+                        icon.classList.add('ri-subtract-line');
+                    } else {
+                        content.classList.remove('!block');
+                        content.classList.add('hidden');
+                        icon.classList.remove('ri-subtract-line');
+                        icon.classList.add('ri-add-line');
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-6 bg-black">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-primary text-xl mb-3">Тарифы</h2>
+                <h3 class="text-4xl font-bold mb-6">Выберите подходящий план</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto">Оптимальные решения для бизнеса любого масштаба</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+
+                <!-- Тариф 1: Профессиональный (рекомендуемый) -->
+                <div class="flex flex-col bg-gradient-to-b from-gray-900 to-primary/10 rounded-2xl p-8 border border-primary/30 relative overflow-hidden card-hover">
+                    <div class="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Популярный
+                    </div>
+                    <div class="mb-6">
+                        <span class="inline-block bg-primary/20 text-primary text-sm font-medium px-3 py-1 rounded-full mb-3">Для роста бизнеса</span>
+                        <h4 class="text-2xl font-bold text-white mb-2">Решения для бизнеса</h4>
+                        <p class="text-gray-400">Оптимальное решение для малого и среднего бизнеса</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-white mb-2">₽5,500<span class="text-lg text-gray-400">/мес</span></div>
+                        <p class="text-gray-400">или ₽5,000 при годовой оплате</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Панель мониторинга видимости сайта с помощью искусственного интеллекта</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Еженедельные отчеты в формате PDF</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Отслеживание изменений по мере внедрения улучшений</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Подробное отслеживание конкурентов (10 конкурентов)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Анализ настроений по бренду с помощью нейросетей</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Предложения по темам и площадкам для публикаций</span>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-4 text-center">
+                        <button class="w-full max-w-xs mx-auto bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-full transition-all duration-300">
+                            Попробовать бесплатно
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Тариф 2: Премиум -->
+                <div class="flex flex-col bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-secondary transition-all duration-300 card-hover">
+                    <div class="mb-6">
+                        <span class="inline-block bg-secondary/10 text-secondary text-sm font-medium px-3 py-1 rounded-full mb-3">Для рекламных агентств</span>
+                        <h4 class="text-2xl font-bold text-white mb-2">Премиум</h4>
+                        <p class="text-gray-400">Анализ и рекомендации для фрилансеров и рекламных агентств.</p>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-bold text-white mb-2">от ₽10,900<span class="text-lg text-gray-400">/мес</span></div>
+                        <p class="text-gray-400">или ₽10,000 при годовой оплате</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Все возможности тарифа для бизнеса</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Отчеты в формате PDF под личным брендом</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Презентационные материалы под личным брендом</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Любое количество доменов</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="ri-check-line text-green-500 mt-1 mr-3"></i>
+                            <span>Приоритетная служба поддержки</span>
+                        </li>
+                    </ul>
+                    <div class="mt-auto pt-4 text-center">
+                        <button class="w-full max-w-xs mx-auto bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-full transition-all duration-300">
+                            Обсудить проект
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section with Contact Form -->
+    <section class="py-20 px-6 bg-gradient-to-r from-primary/10 to-secondary/10">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Получите персональную консультацию</h2>
+            <p class="text-xl text-gray-300 mb-10">Оставьте контакты и наш специалист свяжется с вами</p>
+
+            <form id="consultation-form" class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="name" class="block text-left text-gray-400 mb-2 ml-4">Ваше имя</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                                <i class="ri-user-line text-gray-500"></i>
+                            </div>
+                            <input type="text"
+                                   id="name"
+                                   class="w-full bg-gray-800 border border-gray-700 text-white text-lg rounded-full pl-12 pr-4 py-4 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                                   placeholder="Александр"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-left text-gray-400 mb-2 ml-4">Ваш телефон</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                                <i class="ri-phone-line text-gray-500"></i>
+                            </div>
+                            <input type="tel"
+                                   id="phone"
+                                   class="w-full bg-gray-800 border border-gray-700 text-white text-lg rounded-full pl-12 pr-4 py-4 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                                   placeholder="+7 (___) ___-__-__"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                        class="btn-hover w-full bg-gradient-to-r from-primary to-secondary text-white text-lg font-medium px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+                    <i class="ri-send-plane-line mr-2"></i> Получить консультацию
+                </button>
+
+                <p class="text-gray-500 text-sm mt-4">
+                    Нажимая кнопку, вы соглашаетесь с
+                    <a href="#" class="text-primary hover:underline">политикой конфиденциальности</a>
+                </p>
+            </form>
+        </div>
+    </section>
+    <!-- Модальное окно подтверждения консультации -->
+    <div id="consultation-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-primary/30 rounded-2xl max-w-md w-full overflow-hidden relative animate-scaleIn">
+            <button id="close-consultation-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i class="ri-close-line ri-xl"></i>
+            </button>
+
+            <div class="p-8 pt-12 flex flex-col items-center text-center">
+                <div class="w-24 h-24 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 relative">
+                    <div class="absolute inset-0 border-4 border-blue-500/30 rounded-full animate-ping-slow"></div>
+                    <i class="ri-customer-service-2-line ri-3x text-blue-500"></i>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mb-4">Спасибо за заявку!</h3>
+                <p class="text-xl text-gray-300 mb-6">
+                    Мы свяжемся с вами в самое ближайшее время, чтобы обсудить удобный формат консультации и ответить на все ваши вопросы!
+                </p>
+
+                <button id="modal-close-btn" class="mt-4 px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-full transition-all duration-300 hover:from-primary/90 hover:to-secondary/90 hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]">
+                    Отлично, жду звонка
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-950 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <!-- Логотип -->
+                <a href="#" class="inline-block">
+                    <span class="text-3xl font-bold text-white">Brend ScanAI</span>
+                </a>
+
+                <!-- Контакты - сразу под логотипом -->
+                <div class="mt-6 flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="mailto:BrendScanAI@yandex.ru" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-mail-line mr-2"></i> BrendScanAI@yandex.ru
+                    </a>
+                    <a href="https://t.me/checkbrandai_bot" class="inline-flex items-center text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-telegram-line mr-2"></i> @checkbrandai_bot
+                    </a>
+                </div>
+
+                <!-- Копирайт - ниже контактов с отступом -->
+                <p class="text-gray-500 mt-8">© 2025 Brend ScanAI. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script id="chart-script">
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartContainer = document.getElementById('analytics-chart');
+            if (chartContainer) {
+                const chart = echarts.init(chartContainer);
+                const option = {
+                    animation: false,
+                    tooltip: {
+                        trigger: 'axis',
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        textStyle: {
+                            color: '#1f2937'
+                        }
+                    },
+                    grid: {
+                        top: 10,
+                        right: 10,
+                        bottom: 20,
+                        left: 40
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#4b5563'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#9ca3af'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLine: {
+                            lineStyle: {
+                                color: '#4b5563'
+                            }
+                        },
+                        splitLine: {
+                            lineStyle: {
+                                color: '#374151'
+                            }
+                        },
+                        axisLabel: {
+                            color: '#9ca3af'
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Доставка цветов в Москве',
+                            type: 'line',
+                            smooth: true,
+                            data: [32, 37, 45, 59, 72, 87],
+                            lineStyle: {
+                                color: 'rgba(87, 181, 231, 1)'
+                            },
+                            itemStyle: {
+                                color: 'rgba(87, 181, 231, 1)'
+                            },
+                            showSymbol: false,
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    {
+                                        offset: 0,
+                                        color: 'rgba(87, 181, 231, 0.3)'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(87, 181, 231, 0.1)'
+                                    }
+                                ])
+                            }
+                        },
+                        {
+                            name: 'Купить розы Москва',
+                            type: 'line',
+                            smooth: true,
+                            data: [20, 32, 44, 60, 69, 93],
+                            lineStyle: {
+                                color: 'rgba(141, 211, 199, 1)'
+                            },
+                            itemStyle: {
+                                color: 'rgba(141, 211, 199, 1)'
+                            },
+                            showSymbol: false,
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                    {
+                                        offset: 0,
+                                        color: 'rgba(141, 211, 199, 0.3)'
+                                    },
+                                    {
+                                        offset: 1,
+                                        color: 'rgba(141, 211, 199, 0.1)'
+                                    }
+                                ])
+                            }
+                        }
+                    ]
+                };
+                chart.setOption(option);
+                window.addEventListener('resize', function () {
+                    chart.resize();
+                });
+            }
+        });
+    </script>
+    <!-- Скрипт для плавной прокрутки -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    <!-- Модальное окно анализа -->
+    <div id="analysis-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <!-- Контейнер содержимого -->
+        <div class="bg-gray-900 border border-primary/30 rounded-2xl max-w-md w-full overflow-hidden relative">
+            <!-- Кнопка закрытия -->
+            <button id="close-analysis-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i class="ri-close-line ri-xl"></i>
+            </button>
+
+            <!-- Шаг 1: Процесс анализа -->
+            <div id="analysis-process" class="p-8 pt-12">
+                <div class="flex flex-col items-center">
+                    <!-- Анимированный лоадер -->
+                    <div class="w-20 h-20 relative mb-6">
+                        <div class="absolute inset-0 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+                        <div class="absolute inset-4 border-4 border-secondary/20 border-b-secondary rounded-full animate-spin-reverse"></div>
+                        <div class="absolute inset-8 border-4 border-white/20 rounded-full"></div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-2">Идет анализ сайта</h3>
+                    <p class="text-gray-400 text-center mb-6">
+                        Анализируем для ChatGPT, YandexGPT и других ИИ...<br>
+                        <span id="countdown-text">Осталось <span id="countdown">60</span> секунд</span>
+                    </p>
+
+                    <!-- Прогресс бар -->
+                    <div class="w-full bg-gray-800 rounded-full h-2.5 mb-6 overflow-hidden">
+                        <div id="progress-bar" class="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000" style="width: 0%"></div>
+                    </div>
+
+                    <!-- Анимированные точки -->
+                    <div class="flex space-x-2 mb-8">
+                        <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        <div class="w-2 h-2 bg-primary rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                        <div class="w-2 h-2 bg-primary rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Шаг 2: Результаты анализа -->
+            <div id="analysis-results" class="p-8 pt-12 hidden">
+                <div class="flex flex-col items-center text-center">
+                    <!-- Иконка успеха -->
+                    <div class="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mb-6 relative">
+                        <div class="absolute inset-0 border-4 border-green-500/30 rounded-full animate-ping-slow"></div>
+                        <i class="ri-checkbox-circle-line ri-3x text-green-500"></i>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white mb-2">Анализ завершен!</h3>
+                    <p class="text-gray-400 mb-6">Получите <span class="text-primary font-bold">бесплатный отчет</span> для улучшения видимости в ИИ</p>
+
+                    <!-- Кнопка получения отчета -->
+                    <a href="report.html" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                        Получить отчет
+                    </a>
+
+                    <p class="text-xs text-gray-500 mt-4">
+                        Отчет доступен в демо-версии. Для получения полного отчета свяжитесь с нами.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для ввода URL -->
+    <div id="no-url-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-primary/30 rounded-2xl max-w-md w-full overflow-hidden relative animate-scaleIn">
+            <button id="close-no-url-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <i class="ri-close-line ri-xl"></i>
+            </button>
+
+            <div class="p-8 pt-12 flex flex-col items-center">
+                <div class="w-20 h-20 relative mb-6">
+                    <div class="absolute inset-0 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
+                    <div class="absolute inset-4 border-4 border-secondary/20 border-b-secondary rounded-full animate-spin-reverse"></div>
+                    <i class="ri-global-line ri-3x text-blue-500 absolute inset-0 flex items-center justify-center"></i>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mb-2">Требуется URL сайта</h3>
+                <p class="text-gray-400 text-center mb-6">
+                    Пожалуйста, введите адрес вашего сайта в формате:<br>
+                    <code class="bg-gray-800 px-2 py-1 rounded mt-2">http://ваш_сайт.ru</code>
+                </p>
+
+                <div class="w-full mb-6">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                            <i class="ri-link text-gray-500"></i>
+                        </div>
+                        <input type="url"
+                               id="url-input"
+                               class="w-full bg-gray-800 border border-gray-700 text-white text-lg rounded-full pl-12 pr-4 py-4 focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300"
+                               placeholder="http://ваш_сайт.ru">
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <button id="cancel-btn" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-full transition-all">
+                        Отмена
+                    </button>
+                    <button id="submit-url-btn" class="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white font-medium rounded-full transition-all hover:shadow-[0_0_15px_rgba(139,92,246,0.5)]">
+                        Анализировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Анимации */
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes ping-slow {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            70%, 100% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .animate-ping-slow {
+            animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes spin-reverse {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .animate-spin-reverse {
+            animation: spin-reverse 1.5s linear infinite;
+        }
+        /* Анимация завершения прогресс-бара */
+        @keyframes progress-pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .progress-completing {
+            animation: progress-pulse 0.5s infinite;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const analyzeBtn = document.querySelector('.btn-hover');
+            const modal = document.getElementById('analysis-modal');
+            const closeBtn = document.getElementById('close-analysis-modal');
+            const processBlock = document.getElementById('analysis-process');
+            const resultsBlock = document.getElementById('analysis-results');
+            const progressBar = document.getElementById('progress-bar');
+            const countdownText = document.getElementById('countdown-text');
+            let progressInterval;
+
+            // Функция закрытия модального окна
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                processBlock.classList.remove('hidden');
+                resultsBlock.classList.add('hidden');
+                progressBar.style.width = '0%';
+                progressBar.classList.remove('progress-completing');
+                if (progressInterval) clearInterval(progressInterval);
+            }
+
+            // Обработчик кнопки анализа
+            analyzeBtn.addEventListener('click', function () {
+                const urlInput = document.querySelector('input[type="url"]');
+
+                if (!urlInput.value) {
+                    // Показываем модальное окно с требованием URL
+                    const noUrlModal = document.getElementById('no-url-modal');
+                    noUrlModal.classList.remove('hidden');
+                    noUrlModal.classList.add('flex');
+                    return;
+                }
+
+                // Сброс состояния
+                progressBar.style.width = '0%';
+                progressBar.classList.remove('progress-completing');
+                processBlock.classList.remove('hidden');
+                resultsBlock.classList.add('hidden');
+
+                // Восстановление исходного текста
+                countdownText.innerHTML = 'Осталось <span id="countdown">30</span> секунд';
+
+                // Показываем модальное окно
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                // Запускаем анимацию прогресса
+                let secondsPassed = 0;
+                const totalSeconds = 30;
+                let isCompleting = false;
+
+                // Получаем элемент счетчика после восстановления HTML
+                const countdownEl = document.getElementById('countdown');
+
+                progressInterval = setInterval(function () {
+                    secondsPassed++;
+                    const secondsRemaining = totalSeconds - secondsPassed;
+
+                    // Обновляем таймер
+                    if (secondsRemaining >= 0) {
+                        countdownEl.textContent = secondsRemaining;
+                    }
+
+                    // Обновляем прогресс (90% за 30 секунд)
+                    const progress = Math.min((secondsPassed / totalSeconds) * 90, 90);
+                    progressBar.style.width = `${progress}%`;
+
+                    // Когда время вышло
+                    if (secondsPassed >= totalSeconds && !isCompleting) {
+                        isCompleting = true;
+                        countdownText.textContent = 'Отчет готов! Завершаем обработку...';
+                        progressBar.classList.add('progress-completing');
+
+                        // Завершаем заполнение (последние 10% за 10 секунд)
+                        let completionProgress = 90;
+                        const completionInterval = setInterval(() => {
+                            completionProgress += 1;
+                            progressBar.style.width = `${completionProgress}%`;
+
+                            if (completionProgress >= 100) {
+                                clearInterval(completionInterval);
+                                progressBar.classList.remove('progress-completing');
+
+                                // Добавляем небольшую задержку перед показом результатов
+                                setTimeout(() => {
+                                    // Показываем результаты
+                                    processBlock.classList.add('hidden');
+                                    resultsBlock.classList.remove('hidden');
+                                    clearInterval(progressInterval);
+                                }, 500);
+                            }
+                        }, 1000); // 1% в секунду = 10 секунд на завершение
+                    }
+                }, 1000); // Основной интервал 1 секунда
+            });
+
+            // Обработчик кнопки закрытия
+            closeBtn.addEventListener('click', closeModal);
+
+            // Закрытие по клику вне окна
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Обработка отправки формы консультации
+            const consultationForm = document.getElementById('consultation-form');
+            const consultationModal = document.getElementById('consultation-modal');
+            const closeConsultationBtn = document.getElementById('close-consultation-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+
+            consultationForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                consultationModal.classList.remove('hidden');
+                consultationModal.classList.add('flex');
+            });
+
+            function closeConsultationModal() {
+                consultationModal.classList.add('hidden');
+                consultationModal.classList.remove('flex');
+            }
+
+            closeConsultationBtn.addEventListener('click', closeConsultationModal);
+            modalCloseBtn.addEventListener('click', closeConsultationModal);
+
+            // Закрытие по клику вне окна
+            consultationModal.addEventListener('click', function (e) {
+                if (e.target === consultationModal) {
+                    closeConsultationModal();
+                }
+            });
+
+            // Обработчики для нового модального окна (отсутствие URL)
+            document.getElementById('close-no-url-modal').addEventListener('click', function () {
+                document.getElementById('no-url-modal').classList.add('hidden');
+            });
+
+            document.getElementById('cancel-btn').addEventListener('click', function () {
+                document.getElementById('no-url-modal').classList.add('hidden');
+            });
+
+            document.getElementById('submit-url-btn').addEventListener('click', function () {
+                const urlInput = document.getElementById('url-input');
+                if (urlInput.value) {
+                    // Закрываем модалку
+                    document.getElementById('no-url-modal').classList.add('hidden');
+
+                    // Устанавливаем значение в основное поле
+                    document.querySelector('input[type="url"]').value = urlInput.value;
+
+                    // Запускаем анализ
+                    document.querySelector('.btn-hover').click();
+                } else {
+                    // Если пользователь не ввел URL во втором окне, показываем подсказку
+                    urlInput.focus();
+                    urlInput.classList.add('border-red-500');
+                    setTimeout(() => {
+                        urlInput.classList.remove('border-red-500');
+                    }, 2000);
+                }
+            });
+
+            // Автоматическое добавление протокола при вводе
+            const urlInputs = document.querySelectorAll('input[type="url"]');
+            urlInputs.forEach(input => {
+                input.addEventListener('blur', function () {
+                    if (this.value && !this.value.startsWith('http')) {
+                        this.value = 'https://' + this.value;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
